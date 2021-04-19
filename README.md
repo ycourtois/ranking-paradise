@@ -14,8 +14,14 @@ mvnw verify
 
 ## Start API
 
+To target a DynamoDB table on AWS Service :
 ```
-bash build_and_run.sh --s /h/travail/maven_data/settings.xml
+bash build_and_run.sh
+```
+
+To target a DynamoDB table on localstack :
+```
+bash build_and_run.sh --localstack
 ```
 
 Application will listen on http port 8080.
@@ -120,6 +126,12 @@ Status: 200
 
 GET /tournament/{id}/players
 
+**Parameters**
+
+|          Name | Required |  Type   | Description                        |
+| -------------:|:--------:|:-------:| -----------------------------------|
+|     `id` | required | number  | Tournament id          |
+
 **Request**
 
 GET /tournament/1/players
@@ -181,6 +193,9 @@ DELETE /tournament/1
 
 Status: 200
 
+## TODO
+
+Add more tests.
 
 ## Issues
 

@@ -33,9 +33,11 @@ class PlayerServiceImpl @Inject constructor(
     }
 
     override fun listPlayersOrderByScore(tournamentId: Int, orderBy: DynamoDBQueryOrder?): List<Player> {
-        return playerDAO.listPlayersOrderByScore(tournamentId, orderBy)
+        val listPlayersOrderByScore = playerDAO.listPlayersOrderByScore(tournamentId, orderBy)
+        return listPlayersOrderByScore
             .mapIndexed { index, player ->
-                player.ranking = index + 1
+                player.ranking =
+                    if (orderBy == DynamoDBQueryOrder.DESC) (index + 1) else (listPlayersOrderByScore.size - index)
                 player
             }
     }

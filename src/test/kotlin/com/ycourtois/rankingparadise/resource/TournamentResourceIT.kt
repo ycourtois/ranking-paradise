@@ -57,5 +57,6 @@ class TournamentResourceIT : AbstractResourceIT<Player>(Player::class) {
         // then
         Assertions.assertThat(players).hasSize(initialEntities.size)
         Assertions.assertThat(response.status).isEqualTo(Response.Status.OK.statusCode)
+        // TODO: Deserialize a list of players and check if the ranking is consistent with the score
     }
 }
