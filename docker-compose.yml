@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  localstack:
+    image: 'localstack/localstack:0.12.9.1'
+    container_name: "localstack"
+    ports:
+      - "4566:4566"
+    environment:
+      SERVICES: 'dynamodb'
+      DEFAULT_REGION: ${AWS_REGION-eu-west-1}
+      IMAGE_NAME: 'localstack/localstack:0.12.9.1'
+
+
+
+

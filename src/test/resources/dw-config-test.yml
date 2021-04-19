@@ -1,0 +1,26 @@
+logging:
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+    com.ycourtois.rankingparadise: DEBUG
+
+  appenders:
+    - type: console
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+
+dynamodb:
+  aws:
+    profile: ${AWS_PROFILE:-'default'}
+    region: ${AWS_REGION:-'eu-west-1'}
+    endpoint: ${AWS_ENDPOINT:-'http://localhost:4566'}
+  table: "players"
+  primaryKey: "nickname"
+  gsi: "score_index"
